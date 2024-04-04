@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		632A39142BBF5FA500ADBE6D /* ChakraPetch-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 632A39122BBF5F8700ADBE6D /* ChakraPetch-Medium.ttf */; };
+		632A39172BBF623100ADBE6D /* a_Assuan Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 632A39162BBF623100ADBE6D /* a_Assuan Medium.ttf */; };
 		633548912BBF3756009506CE /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633548902BBF3756009506CE /* TicTacToeApp.swift */; };
 		633548952BBF3757009506CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633548942BBF3757009506CE /* Assets.xcassets */; };
 		633548982BBF3757009506CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633548972BBF3757009506CE /* Preview Assets.xcassets */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		632A39122BBF5F8700ADBE6D /* ChakraPetch-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ChakraPetch-Medium.ttf"; sourceTree = "<group>"; };
+		632A39152BBF5FEA00ADBE6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		632A39162BBF623100ADBE6D /* a_Assuan Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "a_Assuan Medium.ttf"; sourceTree = "<group>"; };
 		6335488D2BBF3756009506CE /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		633548902BBF3756009506CE /* TicTacToeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeApp.swift; sourceTree = "<group>"; };
 		633548942BBF3757009506CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -36,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632A39132BBF5F9600ADBE6D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				632A39162BBF623100ADBE6D /* a_Assuan Medium.ttf */,
+				632A39122BBF5F8700ADBE6D /* ChakraPetch-Medium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		633548842BBF3756009506CE = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +69,12 @@
 		6335488F2BBF3756009506CE /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				632A39152BBF5FEA00ADBE6D /* Info.plist */,
 				633548902BBF3756009506CE /* TicTacToeApp.swift */,
 				6335489E2BBF3EC7009506CE /* ChoseView.swift */,
 				633548A32BBF44F0009506CE /* ViewModel.swift */,
 				633548A02BBF3F35009506CE /* Components */,
+				632A39132BBF5F9600ADBE6D /* Fonts */,
 				633548942BBF3757009506CE /* Assets.xcassets */,
 				633548962BBF3757009506CE /* Preview Content */,
 			);
@@ -141,6 +157,8 @@
 			files = (
 				633548982BBF3757009506CE /* Preview Assets.xcassets in Resources */,
 				633548952BBF3757009506CE /* Assets.xcassets in Resources */,
+				632A39142BBF5FA500ADBE6D /* ChakraPetch-Medium.ttf in Resources */,
+				632A39172BBF623100ADBE6D /* a_Assuan Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +309,7 @@
 				DEVELOPMENT_TEAM = 944K4M9L9M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TicTacToe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +339,7 @@
 				DEVELOPMENT_TEAM = 944K4M9L9M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TicTacToe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

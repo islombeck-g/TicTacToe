@@ -4,20 +4,37 @@ struct ChoseGameModeButton: View {
     
     let text: String
     let imageOne: (String, String)
-    let imegeTwo: (String, String)?
+    let imageTwo: (String, String)?
     
     var body: some View {
-        HStack {
+        HStack(alignment: .center) {
             Group {
+                ZStack {
+                    
+                    Image(systemName: imageOne.0)
+                        .foregroundStyle(Color(imageOne.1))
+                    if self.imageTwo != nil {
+                        Image(systemName: imageTwo!.0)
+                            .foregroundStyle(Color(imageTwo!.1))
+                            .padding(.leading, 40)
+                    }
+                }
                 
-                Image(systemName: imageOne.0)
-                    .foregroundStyle(Color(imageOne.1))
+                .font(.system(size: 36))
             }
-            Text("")
+            
+            Text(text)
+                .font(.custom("Chalkboard SE",size: 36))
+                .fontWeight(.medium)
+                .foregroundStyle(.white)
         }
+        .frame(width: 300, height: 80)
     }
 }
 
 //#Preview {
 //    ChoseGameModeButton()
 //}
+#Preview {
+    ChoseView()
+}
