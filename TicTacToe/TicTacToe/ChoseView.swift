@@ -5,6 +5,9 @@ struct ChoseView: View {
     @State var showOnePersonGameMode: Bool = false
     @State var showTwoPeopleGameMode: Bool = false
     
+    @StateObject var onePlayerViewModel = OnePlayerViewModel()
+    @StateObject var twoPlayersViewModel = TwoPlayerViewModel()
+    
     var body: some View {
         VStack(spacing: 8) {
             Image("GameNameImage")
@@ -20,7 +23,9 @@ struct ChoseView: View {
             }
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))
-            Button {} label: {
+            Button {
+                self.showTwoPeopleGameMode.toggle()
+            } label: {
                 ChoseGameModeButton(text: "2 Игрока", imageOne: ("person.fill", "Person1Color"), imageTwo: ("person.fill", "Person2Color"))
             }
             .background(Color("ButtonRedColor"))
@@ -30,7 +35,11 @@ struct ChoseView: View {
             OnePersonGameModeView()
         }
         .sheet(isPresented: self.$showTwoPeopleGameMode) {
-            
+            TwoPlayerGame()
+                .environmentObject(self.twoPlayersViewModel)
+                .onDisappear {
+                    self.twoPlayersViewModel.resetBoard()
+                }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("MainViewBackgroundColor"))

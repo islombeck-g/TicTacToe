@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct OnePersonGame: View {
+struct TwoPlayerGame: View {
     
-    @StateObject var viewModel = OnePlayerViewModel()
+    @EnvironmentObject var viewModel: TwoPlayerViewModel
     @Environment(\.dismiss) var dismiss
     let borderSize = CGFloat(10)
     
@@ -19,7 +19,7 @@ struct OnePersonGame: View {
                         .frame(width: 80, height: 80)
                 }
                 Button {
-                    self.viewModel.resetBoard()
+                        self.viewModel.resetBoard()
                 } label: {
                     Image(systemName: "arrow.clockwise")
                         .foregroundStyle(Color("BlueLightColor"))
@@ -30,6 +30,7 @@ struct OnePersonGame: View {
                 
                 
             }
+            .padding(.top, 20)
             Text(self.viewModel.text)
                 .font(.custom("Chalkboard SE",size: 36))
                 .fontWeight(.medium)
@@ -41,24 +42,24 @@ struct OnePersonGame: View {
                         ForEach(0...2, id: \.self) { column in
                             
                             let elem = viewModel.board[row][column]
-
-                                Image(systemName: elem.displayTile())
-                                    .frame(width: 80, height: 80)
-                                    .font(.system(size: 90))
-                                    .bold()
-                                    .foregroundStyle(Color(elem.tileColor()))
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .background(.white)
-                                    .onTapGesture {
-                                        if self.viewModel.canSelec {
-                                            withAnimation(.bouncy) {
-                                                viewModel.placeTile(row: row, column: column)
-                                            }
+                            
+                            Image(systemName: elem.displayTile())
+                                .frame(width: 80, height: 80)
+                                .font(.system(size: 90))
+                                .bold()
+                                .foregroundStyle(Color(elem.tileColor()))
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .aspectRatio(1, contentMode: .fit)
+                                .background(.white)
+                                .onTapGesture {
+                                    if self.viewModel.canSelec {
+                                        withAnimation(.bouncy) {
+                                            viewModel.placeTile(row: row, column: column)
                                         }
-                                        
                                     }
-                            .frame(width: 100, height: 100)
+                                    
+                                }
+                                .frame(width: 100, height: 100)
                         }
                     }
                 }
@@ -70,5 +71,6 @@ struct OnePersonGame: View {
 }
 
 #Preview {
-    OnePersonGame()
+    TwoPlayerGame()
+        .environmentObject(TwoPlayerViewModel())
 }

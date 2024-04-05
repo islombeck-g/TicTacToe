@@ -1,6 +1,7 @@
+
 import Foundation
 
-final class OnePlayerViewModel: ObservableObject {
+final class TwoPlayerViewModel: ObservableObject {
     
     @Published var board = [[Cell]]()
     @Published var turn = Turn.xmark
@@ -52,6 +53,7 @@ final class OnePlayerViewModel: ObservableObject {
         }
         self.board = newBoard
         self.canSelec = true
+        self.text = "Игрок 1"
     }
     
     private func checkVictory() ->Bool {
@@ -77,4 +79,3 @@ final class OnePlayerViewModel: ObservableObject {
     }
     
 }
-

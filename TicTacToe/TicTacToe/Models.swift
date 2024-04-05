@@ -1,10 +1,16 @@
 import Foundation
 
-enum Tile {
-    case cirlce
-    case xmark
+enum Turn: String {
+    case circle = "circle"
+    case xmark = "xmark"
+}
+
+enum Tile: String {
+    case cirlce = "circle"
+    case xmark = "xmark"
     case empty
 }
+
 struct Cell {
     var tile: Tile
     
@@ -26,7 +32,7 @@ struct Cell {
         case .cirlce:
             "CircleColor"
         case .empty:
-            "XmarkColor"
+            "BackgroundLightColor"
         }
     }
 }
