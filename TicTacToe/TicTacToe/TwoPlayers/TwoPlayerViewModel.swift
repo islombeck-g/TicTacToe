@@ -13,6 +13,7 @@ final class TwoPlayerViewModel: ObservableObject {
     }
     
     func placeTile(row: Int, column: Int) {
+        
         guard self.board[row][column].tile == .empty else { return }
         
         self.board[row][column].tile = self.turn == .circle ? .cirlce : .xmark
@@ -36,9 +37,8 @@ final class TwoPlayerViewModel: ObservableObject {
             self.turn = .circle
             self.text = "Игрок 2"
         }
-        
     }
-    
+
     func resetBoard() {
         
         var newBoard = [[Cell]]()

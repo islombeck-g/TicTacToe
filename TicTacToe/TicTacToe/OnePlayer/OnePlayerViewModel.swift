@@ -5,36 +5,31 @@ final class OnePlayerViewModel: ObservableObject {
     @Published var board = [[Cell]]()
     @Published var turn = Turn.xmark
     @Published var canSelec = true
-    @Published var text = "Игрок 1"
+    @Published var text = "Ваша очередь"
+    
+    @Published var selectedSide = Turn.xmark
     
     init() {
         resetBoard()
     }
     
-    func placeTile(row: Int, column: Int) {
-        guard self.board[row][column].tile == .empty else { return }
+    private func canChose() ->Bool {
         
-        self.board[row][column].tile = self.turn == .circle ? .cirlce : .xmark
-        
-        guard !checkVictory() else {
-            
-            switch turn {
-            case .circle:
-                self.text = "Игрок 2 выиграл"
-            case .xmark:
-                self.text = "Игрок 1 выиграл"
+        for i in self.board {
+            for ii in i {
+                if ii.tile == .empty { return true }
             }
-            self.canSelec = false
-            return
         }
         
-        if self.turn == .circle {
-            self.turn = .xmark
-            self.text = "Игрок 1"
-        } else {
-            self.turn = .circle
-            self.text = "Игрок 2"
-        }
+        return false
+    }
+    
+    func choseSide(side: Turn) {
+        self.selectedSide = side
+        resetBoard()
+    }
+    
+    func placeTile(row: Int, column: Int) {
         
     }
     

@@ -14,7 +14,6 @@
 		633548982BBF3757009506CE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 633548972BBF3757009506CE /* Preview Assets.xcassets */; };
 		6335489F2BBF3EC7009506CE /* ChoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6335489E2BBF3EC7009506CE /* ChoseView.swift */; };
 		633548A22BBF3F73009506CE /* ChoseGameModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633548A12BBF3F73009506CE /* ChoseGameModeButton.swift */; };
-		633548A42BBF44F0009506CE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633548A32BBF44F0009506CE /* ViewModel.swift */; };
 		633E230C2BC00B1200C0A677 /* OnePersonGameModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E230B2BC00B1200C0A677 /* OnePersonGameModeView.swift */; };
 		633E230E2BC00E8700C0A677 /* ButtonsWithRoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E230D2BC00E8700C0A677 /* ButtonsWithRoundedRectangle.swift */; };
 		633E23122BC0147F00C0A677 /* OnePersonGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E23112BC0147F00C0A677 /* OnePersonGame.swift */; };
@@ -23,6 +22,7 @@
 		633E23192BC015E200C0A677 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E23182BC015E200C0A677 /* Models.swift */; };
 		633E231B2BC075B900C0A677 /* TwoPlayerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E231A2BC075B900C0A677 /* TwoPlayerGame.swift */; };
 		633E231D2BC0947D00C0A677 /* TwoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633E231C2BC0947D00C0A677 /* TwoPlayerViewModel.swift */; };
+		63EC68432BC3255D001517A5 /* GameModeButtonImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EC68422BC3255D001517A5 /* GameModeButtonImages.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,6 @@
 		633548972BBF3757009506CE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6335489E2BBF3EC7009506CE /* ChoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseView.swift; sourceTree = "<group>"; };
 		633548A12BBF3F73009506CE /* ChoseGameModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoseGameModeButton.swift; sourceTree = "<group>"; };
-		633548A32BBF44F0009506CE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		633E230B2BC00B1200C0A677 /* OnePersonGameModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePersonGameModeView.swift; sourceTree = "<group>"; };
 		633E230D2BC00E8700C0A677 /* ButtonsWithRoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsWithRoundedRectangle.swift; sourceTree = "<group>"; };
 		633E23112BC0147F00C0A677 /* OnePersonGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePersonGame.swift; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		633E23182BC015E200C0A677 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		633E231A2BC075B900C0A677 /* TwoPlayerGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerGame.swift; sourceTree = "<group>"; };
 		633E231C2BC0947D00C0A677 /* TwoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPlayerViewModel.swift; sourceTree = "<group>"; };
+		63EC68422BC3255D001517A5 /* GameModeButtonImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeButtonImages.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,6 @@
 				632A39152BBF5FEA00ADBE6D /* Info.plist */,
 				633548902BBF3756009506CE /* TicTacToeApp.swift */,
 				6335489E2BBF3EC7009506CE /* ChoseView.swift */,
-				633548A32BBF44F0009506CE /* ViewModel.swift */,
 				633E23182BC015E200C0A677 /* Models.swift */,
 				633E23102BC013DE00C0A677 /* TwoPlayers */,
 				633E230F2BC013D000C0A677 /* OnePlayer */,
@@ -113,6 +112,7 @@
 			children = (
 				633548A12BBF3F73009506CE /* ChoseGameModeButton.swift */,
 				633E230D2BC00E8700C0A677 /* ButtonsWithRoundedRectangle.swift */,
+				63EC68422BC3255D001517A5 /* GameModeButtonImages.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -214,8 +214,8 @@
 				633E23172BC015B700C0A677 /* OnePlayerModel.swift in Sources */,
 				633E230C2BC00B1200C0A677 /* OnePersonGameModeView.swift in Sources */,
 				633548912BBF3756009506CE /* TicTacToeApp.swift in Sources */,
-				633548A42BBF44F0009506CE /* ViewModel.swift in Sources */,
 				633E231D2BC0947D00C0A677 /* TwoPlayerViewModel.swift in Sources */,
+				63EC68432BC3255D001517A5 /* GameModeButtonImages.swift in Sources */,
 				633548A22BBF3F73009506CE /* ChoseGameModeButton.swift in Sources */,
 				633E231B2BC075B900C0A677 /* TwoPlayerGame.swift in Sources */,
 				633E23142BC0150600C0A677 /* OnePlayerViewModel.swift in Sources */,

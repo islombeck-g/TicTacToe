@@ -35,7 +35,7 @@ struct OnePersonGameModeView: View {
             Button {
                 self.dismiss()
             } label: {
-                ChoseGameModeButton(text: "Меню", imageOne: nil, imageTwo: nil)
+                ChoseGameModeButton(text: "Меню", images: [])
             }
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))

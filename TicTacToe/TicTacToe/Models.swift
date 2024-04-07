@@ -5,14 +5,22 @@ enum Turn: String {
     case xmark = "xmark"
 }
 
+enum Diagonal {
+    case vertical
+    case horizontal
+    case deagonalMain // \
+    case diagonalAnti // /
+}
 enum Tile: String {
     case cirlce = "circle"
     case xmark = "xmark"
     case empty
+    
 }
 
 struct Cell {
     var tile: Tile
+    var result: Diagonal?
     
     func displayTile() -> String {
         switch tile {

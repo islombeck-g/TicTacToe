@@ -19,14 +19,18 @@ struct ChoseView: View {
             Button {
                 self.showOnePersonGameMode.toggle()
             } label: {
-                ChoseGameModeButton(text: "1 Игрок", imageOne: ("person.fill", "Person1Color"), imageTwo: nil)
+                ChoseGameModeButton(
+                    text: "1 Игрок",
+                    images: [("person.fill", "Person1Color")])
             }
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))
             Button {
                 self.showTwoPeopleGameMode.toggle()
             } label: {
-                ChoseGameModeButton(text: "2 Игрока", imageOne: ("person.fill", "Person1Color"), imageTwo: ("person.fill", "Person2Color"))
+                ChoseGameModeButton(
+                    text: "2 Игрока",
+                    images: [("person.fill", "Person1Color"), ("person.fill", "Person2Color")])
             }
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))

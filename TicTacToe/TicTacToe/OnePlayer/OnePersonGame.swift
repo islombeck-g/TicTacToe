@@ -2,7 +2,7 @@ import SwiftUI
 
 struct OnePersonGame: View {
     
-    @StateObject var viewModel = OnePlayerViewModel()
+    @EnvironmentObject var viewModel: OnePlayerViewModel
     @Environment(\.dismiss) var dismiss
     let borderSize = CGFloat(10)
     
@@ -27,9 +27,8 @@ struct OnePersonGame: View {
                         .bold()
                         .frame(width: 80, height: 80)
                 }
-                
-                
             }
+            
             Text(self.viewModel.text)
                 .font(.custom("Chalkboard SE",size: 36))
                 .fontWeight(.medium)
@@ -55,8 +54,7 @@ struct OnePersonGame: View {
                                             withAnimation(.bouncy) {
                                                 viewModel.placeTile(row: row, column: column)
                                             }
-                                        }
-                                        
+                                        } 
                                     }
                             .frame(width: 100, height: 100)
                         }
@@ -66,9 +64,12 @@ struct OnePersonGame: View {
             .background(Color("SpringGreenColor"))
             .frame(maxHeight: .infinity, alignment: .center)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("BackgroundDarkColor"))
     }
 }
 
 #Preview {
     OnePersonGame()
+        .environmentObject(OnePlayerViewModel())
 }
