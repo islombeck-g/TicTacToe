@@ -11,6 +11,7 @@ enum Diagonal {
     case deagonalMain // \
     case diagonalAnti // /
 }
+
 enum Tile: String {
     case cirlce = "circle"
     case xmark = "xmark"

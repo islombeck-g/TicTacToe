@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct OnePersonGameModeView: View {
+    
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: OnePlayerViewModel
+    
+    @State var showGame: Bool = false
     
     var body: some View {
         VStack {
@@ -13,17 +17,18 @@ struct OnePersonGameModeView: View {
                 
                 HStack(spacing: 30) {
                     Button {
-                        
+                        self.viewModel.choseSide(side: .xmark)
+                        self.showGame.toggle()
                     } label: {
                         ButtonsWithRoundedRectangle(image: ("xmark", "ButtonYellowColor"))
                     }
                     
                     Button {
-                        
+                        self.viewModel.choseSide(side: .circle)
+                        self.showGame.toggle()
                     } label: {
                         ButtonsWithRoundedRectangle(image: ("circle", "ButtonRedColor"))
                     }
-                    
                 }
             }
             .frame(width: 300, height: 250)
@@ -39,13 +44,19 @@ struct OnePersonGameModeView: View {
             }
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))
-            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color("MainViewBackgroundColor"))
+        .sheet(isPresented: self.$showGame) {
+            OnePersonGame()
+                .onDisappear {
+                    self.viewModel.resetBoard() 
+                }
+        }
     }
 }
 
 #Preview {
     OnePersonGameModeView()
+        .environmentObject(OnePlayerViewModel())
 }

@@ -48,7 +48,7 @@ struct OnePersonGame: View {
                                     .foregroundStyle(Color(elem.tileColor()))
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                     .aspectRatio(1, contentMode: .fit)
-                                    .background(.white)
+                                    .background(Color("BackgroundDarkColor"))
                                     .onTapGesture {
                                         if self.viewModel.canSelec {
                                             withAnimation(.bouncy) {

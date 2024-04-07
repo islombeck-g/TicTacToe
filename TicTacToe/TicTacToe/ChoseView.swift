@@ -35,6 +35,9 @@ struct ChoseView: View {
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color("MainViewBackgroundColor"))
+        
         .sheet(isPresented: self.$showOnePersonGameMode) {
             OnePersonGameModeView()
         }
@@ -45,8 +48,6 @@ struct ChoseView: View {
                     self.twoPlayersViewModel.resetBoard()
                 }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color("MainViewBackgroundColor"))
     }
 }
 
