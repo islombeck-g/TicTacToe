@@ -3,6 +3,7 @@ import SwiftUI
 struct PlaceTileButton: View {
     
     var cell: Cell
+    let gameMode: GameMode
     
     var body: some View {
         Image(systemName: cell.displayTile())
@@ -12,7 +13,7 @@ struct PlaceTileButton: View {
             .foregroundStyle(Color(cell.tileColor()))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .aspectRatio(1, contentMode: .fit)
-            .background(Color("BackgroundDarkColor"))
+            .background(self.gameMode == .twoPlayers ? Color.white: Color("BackgroundDarkColor"))
             .overlay(
                 Group {
                     if let result = self.cell.result {
@@ -24,7 +25,7 @@ struct PlaceTileButton: View {
                                 path.move(to: start)
                                 path.addLine(to: end)
                             }
-                            .stroke(Color("SpringGreenColor"), lineWidth: 15)
+                            .stroke(Color("SpringGreenColor"), lineWidth: 25)
                         case .horizontal:
                             Path { path in
                                 let start = CGPoint(x: 0, y: 50)
@@ -32,7 +33,7 @@ struct PlaceTileButton: View {
                                 path.move(to: start)
                                 path.addLine(to: end)
                             }
-                            .stroke(Color("SpringGreenColor"), lineWidth: 15)
+                            .stroke(Color("SpringGreenColor"), lineWidth: 25)
                         case .diagonalMain:
                             Path { path in
                                 let start = CGPoint(x: 0, y: 0)
@@ -40,7 +41,7 @@ struct PlaceTileButton: View {
                                 path.move(to: start)
                                 path.addLine(to: end)
                             }
-                            .stroke(Color("SpringGreenColor"), lineWidth: 15)
+                            .stroke(Color("SpringGreenColor"), lineWidth: 25)
                         case .diagonalAnti:
                             Path { path in
                                 let start = CGPoint(x: 100, y: 0)
@@ -48,7 +49,7 @@ struct PlaceTileButton: View {
                                 path.move(to: start)
                                 path.addLine(to: end)
                             }
-                            .stroke(Color("SpringGreenColor"), lineWidth: 15)
+                            .stroke(Color("SpringGreenColor"), lineWidth: 25)
                         }
                     }
                 }
@@ -56,6 +57,3 @@ struct PlaceTileButton: View {
     }
 }
 
-#Preview {
-    PlaceTileButton(cell: Cell(tile: Tile.xmark, result: .horizontal))
-}

@@ -43,7 +43,7 @@ struct OnePersonGame: View {
                             
                             
                             ZStack {
-                                PlaceTileButton(cell: elem)
+                                PlaceTileButton(cell: elem, gameMode: .onePlayerRandom)
                                     .onTapGesture {
                                         if self.viewModel.canSelec {
                                             withAnimation(.bouncy) {
@@ -51,7 +51,6 @@ struct OnePersonGame: View {
                                             }
                                         }
                                     }
-                                
                             }
                             .frame(width: 100, height: 100)
                         }

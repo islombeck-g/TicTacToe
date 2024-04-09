@@ -43,23 +43,17 @@ struct TwoPlayerGame: View {
                             
                             let elem = viewModel.board[row][column]
                             
-                            Image(systemName: elem.displayTile())
-                                .frame(width: 80, height: 80)
-                                .font(.system(size: 90))
-                                .bold()
-                                .foregroundStyle(Color(elem.tileColor()))
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .aspectRatio(1, contentMode: .fit)
-                                .background(.white)
-                                .onTapGesture {
-                                    if self.viewModel.canSelec {
-                                        withAnimation(.bouncy) {
-                                            viewModel.placeTile(row: row, column: column)
+                            ZStack {
+                                PlaceTileButton(cell: elem, gameMode: .twoPlayers)
+                                    .onTapGesture {
+                                        if self.viewModel.canSelec {
+                                            withAnimation(.bouncy) {
+                                                viewModel.placeTile(row: row, column: column)
+                                            }
                                         }
                                     }
-                                    
-                                }
-                                .frame(width: 100, height: 100)
+                            }
+                            .frame(width: 100, height: 100)
                         }
                     }
                 }

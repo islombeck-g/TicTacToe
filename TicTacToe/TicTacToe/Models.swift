@@ -1,6 +1,11 @@
 import Foundation
 import SwiftUI
 
+enum GameMode {
+    case onePlayerRandom
+    case twoPlayers
+}
+
 enum Turn: String {
     case circle = "circle"
     case xmark = "xmark"
