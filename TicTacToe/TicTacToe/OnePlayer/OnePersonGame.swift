@@ -40,22 +40,19 @@ struct OnePersonGame: View {
                         ForEach(0...2, id: \.self) { column in
                             
                             let elem = viewModel.board[row][column]
-
-                                Image(systemName: elem.displayTile())
-                                    .frame(width: 80, height: 80)
-                                    .font(.system(size: 90))
-                                    .bold()
-                                    .foregroundStyle(Color(elem.tileColor()))
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                    .aspectRatio(1, contentMode: .fit)
-                                    .background(Color("BackgroundDarkColor"))
+                            
+                            
+                            ZStack {
+                                PlaceTileButton(cell: elem)
                                     .onTapGesture {
                                         if self.viewModel.canSelec {
                                             withAnimation(.bouncy) {
                                                 viewModel.placeTile(row: row, column: column)
                                             }
-                                        } 
+                                        }
                                     }
+                                
+                            }
                             .frame(width: 100, height: 100)
                         }
                     }

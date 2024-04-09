@@ -19,9 +19,3 @@ struct ChoseGameModeButton: View {
     }
 }
 
-//#Preview {
-//    ChoseGameModeButton()
-//}
-#Preview {
-    ChoseView()
-}

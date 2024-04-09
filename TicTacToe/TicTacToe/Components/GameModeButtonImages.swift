@@ -17,6 +17,3 @@ struct GameModeButtonImages: View {
     }
 }
 
-//#Preview {
-//    GameModeButtonImages()
-//}

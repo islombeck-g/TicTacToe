@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 enum Turn: String {
     case circle = "circle"
@@ -8,7 +9,7 @@ enum Turn: String {
 enum Diagonal {
     case vertical
     case horizontal
-    case deagonalMain // \
+    case diagonalMain // \
     case diagonalAnti // /
 }
 
@@ -43,5 +44,9 @@ struct Cell {
         case .empty:
             "BackgroundLightColor"
         }
+    }
+    
+    mutating func updateDiagonal(diagonal: Diagonal) {
+        self.result = diagonal
     }
 }

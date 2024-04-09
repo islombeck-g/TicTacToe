@@ -4,6 +4,7 @@ final class OnePlayerViewModel: ObservableObject {
     
     @Published var board = [[Cell]]()
     @Published var canSelec = true
+    @Published var gameIsOn = false
     @Published var text = "Ваша очередь"
     
     private var selectedSide = Turn.xmark
@@ -12,6 +13,7 @@ final class OnePlayerViewModel: ObservableObject {
     init() {
         resetBoard()
     }
+    
     func resetBoard() {
         
         var newBoard = [[Cell]]()
@@ -109,6 +111,7 @@ final class OnePlayerViewModel: ObservableObject {
         }
         return true
     }
+    
     private func changeTurn() {
         if self.selectedSide == .circle {
             if self.turn == .circle {
@@ -124,27 +127,104 @@ final class OnePlayerViewModel: ObservableObject {
             }
         }
     }
+   
     private func checkVictory() ->Bool {
         
         //      vertical
-        if isTurnLine(row: 0, column: 0) && isTurnLine(row: 1, column: 0) && isTurnLine(row: 2, column: 0) { return true }
-        if isTurnLine(row: 0, column: 1) && isTurnLine(row: 1, column: 1) && isTurnLine(row: 2, column: 1) { return true }
-        if isTurnLine(row: 0, column: 2) && isTurnLine(row: 1, column: 2) && isTurnLine(row: 2, column: 2) { return true }
+        if  isTurnLine(row: 0, column: 0) &&
+            isTurnLine(row: 1, column: 0) &&
+            isTurnLine(row: 2, column: 0) {
+            
+            self.board[0][0].updateDiagonal(diagonal: .vertical)
+            self.board[1][0].updateDiagonal(diagonal: .vertical)
+            self.board[2][0].updateDiagonal(diagonal: .vertical)
+            return true
+        }
+        
+        if  isTurnLine(row: 0, column: 1) &&
+            isTurnLine(row: 1, column: 1) &&
+            isTurnLine(row: 2, column: 1) {
+           
+            self.board[0][1].updateDiagonal(diagonal: .vertical)
+            self.board[1][1].updateDiagonal(diagonal: .vertical)
+            self.board[2][1].updateDiagonal(diagonal: .vertical)
+            return true
+        }
+        
+        if  isTurnLine(row: 0, column: 2) &&
+            isTurnLine(row: 1, column: 2) &&
+            isTurnLine(row: 2, column: 2) {
+            
+            self.board[0][2].updateDiagonal(diagonal: .vertical)
+            self.board[1][2].updateDiagonal(diagonal: .vertical)
+            self.board[2][2].updateDiagonal(diagonal: .vertical)
+            return true
+        }
         
         //        horizontal
-        if isTurnLine(row: 0, column: 0) && isTurnLine(row: 0, column: 1) && isTurnLine(row: 0, column: 2) { return true }
-        if isTurnLine(row: 1, column: 0) && isTurnLine(row: 1, column: 1) && isTurnLine(row: 1, column: 2) { return true }
-        if isTurnLine(row: 2, column: 0) && isTurnLine(row: 2, column: 1) && isTurnLine(row: 2, column: 2) { return true }
+        if  isTurnLine(row: 0, column: 0) && 
+            isTurnLine(row: 0, column: 1) &&
+            isTurnLine(row: 0, column: 2) {
+            
+            self.board[0][0].updateDiagonal(diagonal: .horizontal)
+            self.board[0][1].updateDiagonal(diagonal: .horizontal)
+            self.board[0][2].updateDiagonal(diagonal: .horizontal)
+            
+            return true
+        }
+        
+        if  isTurnLine(row: 1, column: 0) &&
+            isTurnLine(row: 1, column: 1) &&
+            isTurnLine(row: 1, column: 2) {
+            
+            self.board[1][0].updateDiagonal(diagonal: .horizontal)
+            self.board[1][1].updateDiagonal(diagonal: .horizontal)
+            self.board[1][2].updateDiagonal(diagonal: .horizontal)
+            
+            return true
+        }
+        
+        if  isTurnLine(row: 2, column: 0) &&
+            isTurnLine(row: 2, column: 1) &&
+            isTurnLine(row: 2, column: 2) {
+            
+            self.board[2][0].updateDiagonal(diagonal: .horizontal)
+            self.board[2][1].updateDiagonal(diagonal: .horizontal)
+            self.board[2][2].updateDiagonal(diagonal: .horizontal)
+            
+            return true
+        }
         
         //        diagonal
-        if isTurnLine(row: 0, column: 0) && isTurnLine(row: 1, column: 1) && isTurnLine(row: 2, column: 2) { return true }
-        if isTurnLine(row: 0, column: 2) && isTurnLine(row: 1, column: 1) && isTurnLine(row: 2, column: 0) { return true }
+        if  isTurnLine(row: 0, column: 0) &&
+            isTurnLine(row: 1, column: 1) &&
+            isTurnLine(row: 2, column: 2) {
+            
+            self.board[0][0].updateDiagonal(diagonal: .diagonalMain)
+            self.board[1][1].updateDiagonal(diagonal: .diagonalMain)
+            self.board[2][2].updateDiagonal(diagonal: .diagonalMain)
+            
+            return true
+        }
+        
+        if  isTurnLine(row: 0, column: 2) &&
+            isTurnLine(row: 1, column: 1) &&
+            isTurnLine(row: 2, column: 0) {
+        
+            self.board[0][2].updateDiagonal(diagonal: .diagonalAnti)
+            self.board[1][1].updateDiagonal(diagonal: .diagonalAnti)
+            self.board[2][0].updateDiagonal(diagonal: .diagonalAnti)
+            
+            return true
+        }
         
         return false
     }
+    
     private func isTurnLine(row: Int, column: Int) ->Bool {
         board[row][column].tile.rawValue == turn.rawValue
     }
+    
     private func canChose() ->Bool {
         
         for i in self.board {

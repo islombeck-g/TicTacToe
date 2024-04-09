@@ -40,6 +40,7 @@ struct ChoseView: View {
         
         .sheet(isPresented: self.$showOnePersonGameMode) {
             OnePersonGameModeView()
+                .environmentObject(self.onePlayerViewModel)
         }
         .sheet(isPresented: self.$showTwoPeopleGameMode) {
             TwoPlayerGame()
