@@ -21,7 +21,7 @@
 
 ## Установка
 
-1. Клонируйте репозиторий: `[git clone https://github.com/username/tictactoe.git](https://github.com/islombeck-g/TicTacToe.git)`
+1. Клонируйте репозиторий: `https://github.com/islombeck-g/TicTacToe.git`
 2. Откройте проект в Xcode.
 3. Соберите и запустите приложение на симуляторе или физическом устройстве.
 
