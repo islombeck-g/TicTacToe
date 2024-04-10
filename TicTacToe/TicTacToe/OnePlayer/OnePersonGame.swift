@@ -41,7 +41,6 @@ struct OnePersonGame: View {
                             
                             let elem = viewModel.board[row][column]
                             
-                            
                             ZStack {
                                 PlaceTileButton(cell: elem, gameMode: .onePlayerRandom)
                                     .onTapGesture {

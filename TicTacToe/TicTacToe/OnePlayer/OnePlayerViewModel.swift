@@ -1,6 +1,6 @@
 import Foundation
 
-final class OnePlayerViewModel: ObservableObject {
+final class OnePlayerViewModel: GameResultControl, Game, ObservableObject {
     
     @Published var board = [[Cell]]()
     @Published var canSelec = true
@@ -10,24 +10,14 @@ final class OnePlayerViewModel: ObservableObject {
     private var selectedSide = Turn.xmark
     private var turn = Turn.xmark
     
-    init() {
+    override init() {
+        super.init()
         resetBoard()
     }
     
     func resetBoard() {
         
-        var newBoard = [[Cell]]()
-        
-        for _ in 0...2 {
-            var row = [Cell]()
-            for _ in 0...2 {
-                let cell = Cell(tile: .empty)
-                row.append(cell)
-            }
-            newBoard.append(row)
-        }
-        
-        self.board = newBoard
+        self.board = newBoard()
         self.canSelec = true
         
         self.turn = .xmark
@@ -38,13 +28,27 @@ final class OnePlayerViewModel: ObservableObject {
         } else {
             self.text = "Ваша очередь"
         }
-        
     }
+    
+    func placeTile(row: Int, column: Int) {
+        
+        guard self.canSelec else { return }
+        guard self.turn == self.selectedSide else { return }
+        
+        guard self.board[row][column].tile == .empty else { return }
+        
+        self.board[row][column].tile = self.selectedSide == .circle ? .cirlce : .xmark
+        
+        if self.checkToContinueGame() {
+            self.changeTurn()
+            self.artificialIntelligenceChose()
+        }
+    }
+    
     func choseSide(side: Turn) {
         resetBoard()
         
         self.selectedSide = side
-        
         self.turn = .xmark
         
         if side == .circle {
@@ -52,22 +56,6 @@ final class OnePlayerViewModel: ObservableObject {
         }
     }
     
-    func placeTile(row: Int, column: Int) {
-        
-        guard self.canSelec else { print(1);return }
-        guard self.turn == self.selectedSide else { print(2);return }
-        
-        guard self.board[row][column].tile == .empty else { print(3);return }
-        print(4)
-        self.board[row][column].tile = self.selectedSide == .circle ? .cirlce : .xmark
-        print(5)
-        
-        if self.checkToContinueGame() {
-            self.changeTurn()
-            self.artificialIntelligenceChose()
-        }
-    }
-
     private func artificialIntelligenceChose() {
         
         guard self.canChose() else {
@@ -96,9 +84,9 @@ final class OnePlayerViewModel: ObservableObject {
         }
     }
     
-    private func checkToContinueGame() ->Bool {
+    internal func checkToContinueGame() ->Bool {
 //        проверка, есть ли победитель
-        if checkVictory() {
+        if checkVictory(board: &self.board, turn: &self.turn) {
             
             switch turn {
             case .circle:
@@ -112,7 +100,7 @@ final class OnePlayerViewModel: ObservableObject {
         return true
     }
     
-    private func changeTurn() {
+    internal func changeTurn() {
         if self.selectedSide == .circle {
             if self.turn == .circle {
                 self.turn = .xmark
@@ -128,103 +116,6 @@ final class OnePlayerViewModel: ObservableObject {
         }
     }
    
-    private func checkVictory() ->Bool {
-        
-        //      vertical
-        if  isTurnLine(row: 0, column: 0) &&
-            isTurnLine(row: 1, column: 0) &&
-            isTurnLine(row: 2, column: 0) {
-            
-            self.board[0][0].updateDiagonal(diagonal: .vertical)
-            self.board[1][0].updateDiagonal(diagonal: .vertical)
-            self.board[2][0].updateDiagonal(diagonal: .vertical)
-            return true
-        }
-        
-        if  isTurnLine(row: 0, column: 1) &&
-            isTurnLine(row: 1, column: 1) &&
-            isTurnLine(row: 2, column: 1) {
-           
-            self.board[0][1].updateDiagonal(diagonal: .vertical)
-            self.board[1][1].updateDiagonal(diagonal: .vertical)
-            self.board[2][1].updateDiagonal(diagonal: .vertical)
-            return true
-        }
-        
-        if  isTurnLine(row: 0, column: 2) &&
-            isTurnLine(row: 1, column: 2) &&
-            isTurnLine(row: 2, column: 2) {
-            
-            self.board[0][2].updateDiagonal(diagonal: .vertical)
-            self.board[1][2].updateDiagonal(diagonal: .vertical)
-            self.board[2][2].updateDiagonal(diagonal: .vertical)
-            return true
-        }
-        
-        //        horizontal
-        if  isTurnLine(row: 0, column: 0) && 
-            isTurnLine(row: 0, column: 1) &&
-            isTurnLine(row: 0, column: 2) {
-            
-            self.board[0][0].updateDiagonal(diagonal: .horizontal)
-            self.board[0][1].updateDiagonal(diagonal: .horizontal)
-            self.board[0][2].updateDiagonal(diagonal: .horizontal)
-            
-            return true
-        }
-        
-        if  isTurnLine(row: 1, column: 0) &&
-            isTurnLine(row: 1, column: 1) &&
-            isTurnLine(row: 1, column: 2) {
-            
-            self.board[1][0].updateDiagonal(diagonal: .horizontal)
-            self.board[1][1].updateDiagonal(diagonal: .horizontal)
-            self.board[1][2].updateDiagonal(diagonal: .horizontal)
-            
-            return true
-        }
-        
-        if  isTurnLine(row: 2, column: 0) &&
-            isTurnLine(row: 2, column: 1) &&
-            isTurnLine(row: 2, column: 2) {
-            
-            self.board[2][0].updateDiagonal(diagonal: .horizontal)
-            self.board[2][1].updateDiagonal(diagonal: .horizontal)
-            self.board[2][2].updateDiagonal(diagonal: .horizontal)
-            
-            return true
-        }
-        
-        //        diagonal
-        if  isTurnLine(row: 0, column: 0) &&
-            isTurnLine(row: 1, column: 1) &&
-            isTurnLine(row: 2, column: 2) {
-            
-            self.board[0][0].updateDiagonal(diagonal: .diagonalMain)
-            self.board[1][1].updateDiagonal(diagonal: .diagonalMain)
-            self.board[2][2].updateDiagonal(diagonal: .diagonalMain)
-            
-            return true
-        }
-        
-        if  isTurnLine(row: 0, column: 2) &&
-            isTurnLine(row: 1, column: 1) &&
-            isTurnLine(row: 2, column: 0) {
-        
-            self.board[0][2].updateDiagonal(diagonal: .diagonalAnti)
-            self.board[1][1].updateDiagonal(diagonal: .diagonalAnti)
-            self.board[2][0].updateDiagonal(diagonal: .diagonalAnti)
-            
-            return true
-        }
-        
-        return false
-    }
-    
-    private func isTurnLine(row: Int, column: Int) ->Bool {
-        board[row][column].tile.rawValue == turn.rawValue
-    }
-    
     private func canChose() ->Bool {
         
         for i in self.board {

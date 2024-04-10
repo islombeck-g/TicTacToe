@@ -25,6 +25,7 @@ struct ChoseView: View {
             }
             .background(Color("ButtonRedColor"))
             .clipShape(.rect(cornerRadius: 16))
+            
             Button {
                 self.showTwoPeopleGameMode.toggle()
             } label: {

@@ -1,5 +1,9 @@
-import Foundation
-import SwiftUI
+protocol Game: AnyObject {
+    func placeTile(row: Int, column: Int)
+    func resetBoard()
+    func checkToContinueGame() ->Bool
+    func changeTurn()
+}
 
 enum GameMode {
     case onePlayerRandom

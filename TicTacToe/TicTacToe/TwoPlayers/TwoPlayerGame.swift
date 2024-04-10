@@ -31,6 +31,7 @@ struct TwoPlayerGame: View {
                 
             }
             .padding(.top, 20)
+            
             Text(self.viewModel.text)
                 .font(.custom("Chalkboard SE",size: 36))
                 .fontWeight(.medium)
