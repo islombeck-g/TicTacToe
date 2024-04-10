@@ -18,8 +18,6 @@
 - Swift
 - SwiftUI
 - MVVM архитектура
-- Protocols
-- Extensions
 
 ## Установка
 
@@ -41,13 +39,13 @@
 ## Режим для одного игрока
 <div>
  <img src="images/ChoseSide.png" width="280">
-  <img src="images/OnePlayerGame.png" width="280">
+ <img src="images/TwoPlayersGame.png" width="280">
+  <img src="images/TwoPlayersGame1.png" width="280">
 </div>
 
 ## Режим для двух игроков
 <div>
- <img src="images/TwoPlayersGame.png" width="280">
-  <img src="images/TwoPlayersGame1.png" width="280">
+ <img src="images/OnePlayerGame.png" width="280">
 </div>
 
 ## Структура проекта
